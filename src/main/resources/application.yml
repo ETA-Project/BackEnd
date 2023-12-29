@@ -1,0 +1,27 @@
+# application.yml
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/eta
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234
+  thymeleaf:
+    cache: false
+
+  # spring data jpa ??
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+springdoc:
+  packages-to-scan: com.example.controller
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  swagger-ui:
+    path: /
+    disable-swagger-default-url: true
+    display-request-duration: true
+    operations-sorter: alpha
