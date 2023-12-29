@@ -23,6 +23,6 @@ public class ElevatorService {
     public int calculateFloorFromPressure(double currentPressure) {
         // 기압 차이를 이용하여 층수를 계산
         double pressureDifference = BASE_PRESSURE - currentPressure;
-        return (int) (pressureDifference / PRESSURE_PER_FLOOR);
+        return (int) (pressureDifference / PRESSURE_PER_FLOOR) + 1;
     }
 }
