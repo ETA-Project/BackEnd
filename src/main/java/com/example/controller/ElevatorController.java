@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*")
 @Tag(name = "ETA API", description = "Swagger 테스트용 API")
 @RestController
 @RequiredArgsConstructor
