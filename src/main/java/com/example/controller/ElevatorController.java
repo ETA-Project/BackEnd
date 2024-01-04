@@ -17,6 +17,17 @@ public class ElevatorController {
     private final ElevatorService elevatorService;
     private final ElevatorRepository elevatorRepository;
 
+    @Operation(summary = "엘리베이터 번호 입력", description = "해당 번호의 엘리베이터 층수를 반환합니다.")
+    @Parameter(name="id", description = "엘리베이터 번호")
+    @GetMapping("/eta/check/{id}")
+    public int getElevatorFloor(@PathVariable("id") int id) {
+        // elevatorRepository에서 id를 통해 엘리베이터 객체 불러옴
+        Elevator elevator = elevatorRepository.findById(id).get();
+
+        // 해당 객체에 저장된 층수를 반환
+        return elevator.getFloor();
+    }
+
     @Operation(summary = "엘리베이터의 기압 입력", description = "엘리베이터 번호와 기압을 입력받아 층수를 반환합니다.")
     @Parameter(name = "id", description = "엘리베이터 번호")
     @Parameter(name = "pressure", description = "엘리베이터의 기압")
