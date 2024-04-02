@@ -22,7 +22,7 @@ public class ElevatorController {
     @Parameter(name="id", description = "엘리베이터 번호")
     @GetMapping("/eta/check/{id}")
     public int getElevatorFloor(@PathVariable("id") int id) {
-        // elevatorRepository에서 id를 통해 엘리베이터 객체 불러옴
+        // elevatorRepository 에서 id를 통해 엘리베이터 객체 불러옴
         Elevator elevator = elevatorRepository.findById(id).get();
 
         // 해당 객체에 저장된 층수를 반환
@@ -52,5 +52,14 @@ public class ElevatorController {
     public String updateInit(@PathVariable("base") double basePressure, @PathVariable("per") double pressureFloor) {
         // 받은 기압들을 토대로 초기화
         return elevatorService.pressureInit(basePressure, pressureFloor) ? "초기화 성공!" : "오류 발생..";
+    }
+
+    @Operation(summary = "엘리베이터의 높이 구하기", description = "엘리베이터의 현재 높이를 미터 단위로 반환합니다.")
+    @Parameter(name = "pressure", description = "기압")
+    @Parameter(name = "temperature", description = "온도")
+    @GetMapping("/eta/height/{pressure}/{temperature}")
+    public double getElevatorHeight(@PathVariable("pressure") double pressure, @PathVariable("temperature") double temperature) {
+        // 받은 데이터들을 토대로 엘리베이터 높이 반환
+        return elevatorService.calculateHeight(pressure, temperature);
     }
 }

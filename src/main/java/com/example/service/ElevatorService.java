@@ -26,7 +26,7 @@ public class ElevatorService {
         return (int) (pressureDifference / PRESSURE_PER_FLOOR) + 1;
     }
 
-    public static double calculateHeight(double P, double T) {
+    public double calculateHeight(double P, double T) {
         // 상수 정의
         double P0 = 100910;     // 해수면의 평균 기압 (파스칼)
         double R = 287.05;      // 특정 기체 상수 (J/kg·K)
